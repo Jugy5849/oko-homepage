@@ -9142,7 +9142,7 @@ button,a{ -webkit-tap-highlight-color: transparent; }
 }
 .category-cards{
   display:grid !important;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:14px !important;
   margin-top:0 !important;
 }
@@ -9653,6 +9653,211 @@ button,a{ -webkit-tap-highlight-color: transparent; }
   .category-cards{grid-template-columns:1fr !important;}
   .oko-category-only .market-tab.category-card{min-height:230px !important;}
   .category-bottom-cta{height:auto !important;min-height:0 !important;padding:16px !important;align-items:flex-start !important;flex-direction:column !important;}
+}
+
+/* ─────────────────────────────
+   V103 TWO-CHOICE UX
+   Two clear, full-width paths instead of a four-column grid.
+───────────────────────────── */
+.oko-category-only .category-cards{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:20px !important;
+}
+.oko-category-only .market-tab.category-card{
+  min-height:330px !important;
+  padding:30px !important;
+  border-radius:34px !important;
+}
+.oko-category-only .market-tab.category-card::after{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  inset:0 !important;
+  z-index:1 !important;
+  pointer-events:none !important;
+  border-radius:inherit !important;
+  background:linear-gradient(90deg,rgba(4,6,9,.10),transparent 58%) !important;
+}
+.oko-category-only .market-tab.category-card .category-number{
+  position:absolute !important;
+  top:28px !important;
+  right:30px !important;
+  z-index:2 !important;
+  margin:0 !important;
+  font-family:"JetBrains Mono",monospace !important;
+  font-size:11px !important;
+  font-style:normal !important;
+  font-weight:800 !important;
+  letter-spacing:2px !important;
+  color:rgba(255,255,255,.48) !important;
+}
+.oko-category-only .market-tab.category-card span{
+  margin-bottom:48px !important;
+}
+.oko-category-only .market-tab.category-card b{
+  max-width:420px !important;
+  font-size:clamp(34px,3vw,48px) !important;
+}
+.oko-category-only .market-tab.category-card small{
+  max-width:410px !important;
+  min-height:auto !important;
+  font-size:15px !important;
+}
+.oko-category-only .market-tab.category-card em{
+  margin-top:28px !important;
+}
+.oko-category-only .market-tab.category-card em::after{
+  content:"";
+  width:0;
+  height:1px;
+  margin-left:0;
+  background:currentColor;
+  opacity:.75;
+  transition:width .28s ease,margin-left .28s ease;
+}
+.oko-category-only .market-tab.category-card:hover em::after,
+.oko-category-only .market-tab.category-card:focus-visible em::after{
+  width:34px;
+  margin-left:10px;
+}
+.oko-category-only .market-tab.category-card:focus-visible{
+  outline:3px solid rgba(255,122,79,.78) !important;
+  outline-offset:4px !important;
+}
+.oko-category-only .market-tab.category-card.tab-event::before{
+  background:
+    linear-gradient(180deg,rgba(8,4,9,.06) 0%,rgba(8,4,9,.38) 48%,rgba(5,5,8,.86) 100%),
+    radial-gradient(circle at 19% 16%,rgba(255,209,102,.88),transparent 12%),
+    radial-gradient(circle at 78% 22%,rgba(255,98,49,.78),transparent 20%),
+    radial-gradient(circle at 55% 58%,rgba(108,124,255,.38),transparent 30%),
+    linear-gradient(135deg,#741f38 0%,#2d1023 52%,#06070b 100%) !important;
+}
+.category-bottom-cta{
+  margin-top:22px !important;
+  transition:border-color .25s ease,background .25s ease,transform .25s ease !important;
+}
+.category-bottom-cta::before{
+  content:"⌕";
+  flex:0 0 auto;
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  margin-right:-6px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  color:rgba(255,255,255,.62);
+  font-size:19px;
+}
+.category-bottom-cta:hover{
+  border-color:rgba(255,255,255,.22) !important;
+  background:rgba(255,255,255,.10) !important;
+}
+.category-bottom-cta a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:0 16px !important;
+  border-radius:16px;
+  background:rgba(255,98,49,.10);
+  transition:background .25s ease,transform .25s ease;
+}
+.category-bottom-cta a:hover{
+  background:rgba(255,98,49,.18);
+  transform:translateX(2px);
+}
+@media(max-height:820px) and (min-width:1081px){
+  .oko-category-only .market-tab.category-card{min-height:280px !important;}
+  .oko-category-only .market-tab.category-card span{margin-bottom:34px !important;}
+}
+@media(max-width:980px){
+  .oko-category-only .category-cards{gap:14px !important;}
+  .oko-category-only .market-tab.category-card{min-height:290px !important;padding:25px !important;}
+  .oko-category-only .market-tab.category-card .category-number{top:24px !important;right:25px !important;}
+}
+@media(max-width:620px){
+  .oko-category-only .category-cards{grid-template-columns:1fr !important;}
+  .oko-category-only .market-tab.category-card{min-height:270px !important;padding:24px !important;}
+  .oko-category-only .market-tab.category-card span{margin-bottom:34px !important;}
+  .oko-category-only .market-tab.category-card b{font-size:34px !important;}
+  .oko-category-only .market-tab.category-card .category-number{top:23px !important;right:24px !important;}
+  .category-bottom-cta::before{display:none;}
+  .category-bottom-cta a{width:100%;}
+}
+
+/* ─────────────────────────────
+   V104 FINAL CATEGORY POLISH
+   Equal visual weight, clearer choice and a category-neutral CTA.
+───────────────────────────── */
+.oko-category-only .container{
+  width:min(1360px,calc(100vw - 64px)) !important;
+}
+.oko-category-only .market-head.category-clean-head{
+  grid-template-columns:minmax(0,1.15fr) minmax(320px,.62fr) !important;
+  gap:64px !important;
+  margin-bottom:24px !important;
+}
+.oko-category-only .market-sub{
+  max-width:440px !important;
+}
+.oko-category-only .market-tab.category-card{
+  min-height:360px !important;
+  border-color:rgba(255,255,255,.16) !important;
+}
+.oko-category-only .market-tab.category-card::after{
+  background:
+    linear-gradient(180deg,rgba(3,5,8,.04) 0%,rgba(3,5,8,.14) 36%,rgba(3,5,8,.82) 100%),
+    linear-gradient(90deg,rgba(3,5,8,.18),transparent 64%) !important;
+}
+.oko-category-only .market-tab.category-card span{
+  background:rgba(8,10,14,.38) !important;
+  backdrop-filter:blur(12px) !important;
+  -webkit-backdrop-filter:blur(12px) !important;
+}
+.oko-category-only .market-tab.category-card b{
+  margin-top:auto !important;
+}
+.oko-category-only .market-tab.category-card em{
+  display:flex !important;
+  min-height:36px;
+  align-items:center !important;
+}
+.oko-category-only .market-tab.category-card:hover,
+.oko-category-only .market-tab.category-card:focus-visible{
+  border-color:rgba(255,122,79,.56) !important;
+  box-shadow:0 42px 120px rgba(0,0,0,.48),0 0 0 1px rgba(255,122,79,.12) inset !important;
+}
+.category-bottom-cta{
+  min-height:74px !important;
+}
+.category-bottom-cta strong{
+  flex:1 1 auto;
+}
+.category-bottom-cta a{
+  min-width:176px;
+  background:linear-gradient(135deg,#ff6231,#ff7a4f) !important;
+  color:#fff !important;
+  box-shadow:0 12px 34px rgba(255,98,49,.24);
+}
+.category-bottom-cta a:hover{
+  background:linear-gradient(135deg,#ff7146,#ff875f) !important;
+}
+@media(max-height:820px) and (min-width:1081px){
+  .oko-category-only .market-tab.category-card{min-height:300px !important;}
+}
+@media(max-width:980px){
+  .oko-category-only .container{width:min(var(--max),calc(100vw - 32px)) !important;}
+  .oko-category-only .market-head.category-clean-head{
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+  }
+  .oko-category-only .market-tab.category-card{min-height:300px !important;}
+}
+@media(max-width:620px){
+  .oko-category-only .container{width:calc(100vw - 24px) !important;}
+  .oko-category-only .market-tab.category-card{min-height:280px !important;}
+  .category-bottom-cta{min-height:0 !important;}
 }
 
 
@@ -10346,7 +10551,7 @@ nav{
   </ul>
   <div class="nav-right">
     <a href="login" class="nav-login">Prihlásiť sa</a>
-    <a href="browse" class="nav-book">Objednať pohľad →</a>
+    <a href="browse" class="nav-book">Vybrať miesto →</a>
   </div>
 </nav>
 
@@ -10357,7 +10562,7 @@ nav{
 
   <div class="hero-inner">
     <div>
-      <div class="eyebrow"><i></i>Živý pohľad na požiadanie</div>
+      <div class="eyebrow"><i></i>Živé video s človekom priamo na mieste</div>
 
       <div class="headlines">
         <div class="hv" data-v="0">
@@ -10366,7 +10571,7 @@ nav{
         <div class="hv on" data-v="1">
           <ul class="hlist">
             <li><span class="hbullet"></span>v Prahe?</li>
-            <li><span class="hbullet"></span>pri Mori?</li>
+            <li><span class="hbullet"></span>pri mori?</li>
             <li><span class="hbullet"></span><em>na Sahare?</em></li>
           </ul>
         </div>
@@ -10380,7 +10585,7 @@ nav{
       <div class="h-ctas">
         <a href="browse" class="btn-main">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
-          Objednať živý pohľad — od 6€
+          Vybrať miesto — od 6 €
         </a>
         <a href="#how" class="btn-link btn-secondary">Ako to funguje <span aria-hidden="true">→</span></a>
       </div>
@@ -10388,7 +10593,7 @@ nav{
       <div class="h-trust">
         <div class="trust-i">
           <svg class="tico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Escrow
+          Živé video
         </div>
         <div class="trust-i">
           <svg class="tico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -10396,21 +10601,21 @@ nav{
         </div>
         <div class="trust-i">
           <svg class="tico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-          100 % refund do 8 min
+          Ty určuješ, čo uvidíš
         </div>
       </div>
 
       <div class="hero-trust-panel">
-        <div><strong>Neodpovie?</strong><span>Automatický 100% refund</span></div>
-        <div><strong>Platba?</strong><span>Drží sa v escrow</span></div>
-        <div><strong>Riziko?</strong><span>Provider dostane peniaze až po session</span></div>
+        <div><strong>Kto?</strong><span>Človek priamo na mieste</span></div>
+        <div><strong>Čo uvidíš?</strong><span>To, čo mu povieš ukázať</span></div>
+        <div><strong>Ako dlho?</strong><span>8 alebo 15 minút</span></div>
       </div>
     </div>
 
     <div class="product-stage">
       <div class="app-shell">
         <div class="app-top">
-          <div class="app-title"><span class="status-dot"></span>Živý človek na mieste</div>
+          <div class="app-title"><span class="status-dot"></span>Človek priamo na mieste</div>
           <div class="app-meta">Praha · live teraz</div>
         </div>
         <div class="map-grid"></div>
@@ -10425,7 +10630,7 @@ nav{
 
         <div class="done-panel float-panel">
           <div class="done-ico">⭐</div>
-          <div><b>Session dokončená</b><span>Hodnotenie: 4.9 · 15 min</span></div>
+          <div><b>Živý pohľad dokončený</b><span>Praha · 15 minút</span></div>
         </div>
 
         <div class="request-panel float-panel">
@@ -10434,9 +10639,9 @@ nav{
         </div>
 
         <div class="escrow-panel float-panel">
-          <div class="panel-label">Escrow · Chránené</div>
+          <div class="panel-label">Rýchly pohľad · 8 minút</div>
           <div class="amount">6,00 €</div>
-          <p>Platba zabezpečená. Uvoľní sa až po session.</p>
+          <p>Jasná cena ešte pred objednaním.</p>
         </div>
 
         <div class="live-card">
@@ -10474,18 +10679,18 @@ nav{
 
 <div class="ticker">
   <div class="ticker-t">
-    <div class="ti"><span class="ti-num">6€</span><span class="ti-lbl">Quick Look · 8 min</span></div>
-    <div class="ti"><span class="ti-num">&lt;8 min</span><span class="ti-lbl">Priemerná odpoveď</span></div>
-    <div class="ti"><span class="ti-num">100%</span><span class="ti-lbl">Refund ak neodpovie</span></div>
-    <div class="ti"><span class="ti-num">4.8★</span><span class="ti-lbl">Hodnotenie providerov</span></div>
-    <div class="ti"><span class="ti-num">24/7</span><span class="ti-lbl">Provideri online</span></div>
-    <div class="ti"><span class="ti-num">10€</span><span class="ti-lbl">Full Look · 15 min</span></div>
-    <div class="ti"><span class="ti-num">6€</span><span class="ti-lbl">Quick Look · 8 min</span></div>
-    <div class="ti"><span class="ti-num">&lt;8 min</span><span class="ti-lbl">Priemerná odpoveď</span></div>
-    <div class="ti"><span class="ti-num">100%</span><span class="ti-lbl">Refund ak neodpovie</span></div>
-    <div class="ti"><span class="ti-num">4.8★</span><span class="ti-lbl">Hodnotenie providerov</span></div>
-    <div class="ti"><span class="ti-num">24/7</span><span class="ti-lbl">Provideri online</span></div>
-    <div class="ti"><span class="ti-num">10€</span><span class="ti-lbl">Full Look · 15 min</span></div>
+    <div class="ti"><span class="ti-num">6 €</span><span class="ti-lbl">Rýchly pohľad · 8 min</span></div>
+    <div class="ti"><span class="ti-num">LIVE</span><span class="ti-lbl">Nie zo záznamu</span></div>
+    <div class="ti"><span class="ti-num">TY</span><span class="ti-lbl">Hovoríš, čo má ukázať</span></div>
+    <div class="ti"><span class="ti-num">1 : 1</span><span class="ti-lbl">Človek priamo na mieste</span></div>
+    <div class="ti"><span class="ti-num">4</span><span class="ti-lbl">Spôsoby, ako využiť OKO</span></div>
+    <div class="ti"><span class="ti-num">10 €</span><span class="ti-lbl">Detailný pohľad · 15 min</span></div>
+    <div class="ti"><span class="ti-num">6 €</span><span class="ti-lbl">Rýchly pohľad · 8 min</span></div>
+    <div class="ti"><span class="ti-num">LIVE</span><span class="ti-lbl">Nie zo záznamu</span></div>
+    <div class="ti"><span class="ti-num">TY</span><span class="ti-lbl">Hovoríš, čo má ukázať</span></div>
+    <div class="ti"><span class="ti-num">1 : 1</span><span class="ti-lbl">Človek priamo na mieste</span></div>
+    <div class="ti"><span class="ti-num">4</span><span class="ti-lbl">Spôsoby, ako využiť OKO</span></div>
+    <div class="ti"><span class="ti-num">10 €</span><span class="ti-lbl">Detailný pohľad · 15 min</span></div>
   </div>
 </div>
 
@@ -10515,16 +10720,16 @@ nav{
       <div class="oko-order-left">
         <div class="sec-lbl">Ako funguje OKO</div>
         <h2>Live pohľad<br><em>za pár minút.</em></h2>
-        <p>Vyber miesto, spoj sa s providerom a počas videa mu povieš, čo má ukázať.</p>
+        <p>Vyber si miesto a spoj sa s človekom, ktorý je priamo tam. Počas živého videa mu povieš, čo chceš vidieť.</p>
         <div class="oko-order-chips">
-          <span>Provider na mieste</span>
-          <span>Hlasová navigácia</span>
-          <span>Escrow platba</span>
+          <span>Človek na mieste</span>
+          <span>Hovoríš, čo má ukázať</span>
+          <span>Jasná cena</span>
         </div>
         <div class="oko-inline-result">
           <small>Výsledok</small>
           <strong>Na chvíľu sa prenesieš inam.</strong>
-          <span>Pred cestou, rezerváciou alebo rozhodnutím máš reálny pohľad z miesta.</span>
+          <span>Či si chceš oddýchnuť, alebo niečo overiť pred cestou, vidíš miesto tak, ako vyzerá práve teraz.</span>
         </div>
       </div>
 
@@ -10569,8 +10774,8 @@ nav{
             <div class="oko-step4-no">02</div>
             <div class="oko-step4-main">
               <div class="oko-step4-icon">👤</div>
-              <b>Vyber providera</b>
-              <span>Vidíš rating, dostupnosť a cenu ešte pred potvrdením.</span>
+              <b>Vyber človeka na mieste</b>
+              <span>Vidíš jeho hodnotenie, dostupnosť a cenu ešte pred objednaním.</span>
             </div>
           </div>
           <div class="oko-step4">
@@ -10578,15 +10783,15 @@ nav{
             <div class="oko-step4-main">
               <div class="oko-step4-icon">🎙️</div>
               <b>Povedz, čo chceš vidieť</b>
-              <span>Počas videa naviguješ providera hlasom.</span>
+              <span>Počas videa ho naviguješ hlasom.</span>
             </div>
           </div>
           <div class="oko-step4">
             <div class="oko-step4-no">04</div>
             <div class="oko-step4-main">
               <div class="oko-step4-icon">👁️</div>
-              <b>Sleduj a Uživaj moment</b>
-              <span>Vidíš aktuálnu realitu miesta.</span>
+              <b>Sleduj a uži si moment</b>
+              <span>Vidíš miesto naživo a pýtaš sa na to, čo ťa zaujíma.</span>
             </div>
           </div>
         </div>
@@ -10599,47 +10804,37 @@ nav{
   <div class="container">
     <div class="market-head category-clean-head">
       <div>
-        <div class="market-kicker">OKO live marketplace</div>
+        <div class="market-kicker">Vyber si živý pohľad</div>
         <h2 class="market-title">Kam sa chceš preniesť?</h2>
       </div>
-      <p class="market-sub">Vyber si, čo chceš vidieť naživo. Provider na mieste ti ukáže realitu cez kameru — podľa tvojich inštrukcií.</p>
+      <p class="market-sub">Vyber si miesto alebo udalosť. Človek priamo na mieste ti cez živé video ukáže presne to, čo chceš vidieť.</p>
     </div>
 
     <div class="category-live-proof">
       <i></i>
-      <span>Živý človek na mieste · tvoje inštrukcie · 8 alebo 15 minút</span>
+      <span>Človek priamo na mieste · ty hovoríš, čo má ukázať · 8 alebo 15 minút</span>
     </div>
 
     <div class="market-tabs category-cards" aria-label="Typy živých pohľadov">
-      <a class="market-tab category-card tab-place active" href="browse">
+      <a class="market-tab category-card tab-place" href="browse" aria-label="Vybrať živý pohľad na miesto">
+        <i class="category-number" aria-hidden="true">01</i>
         <span>⌖</span>
         <b>Miesta</b>
         <small>Ulica, výhľad, pamiatka alebo pláž — nie zo záznamu, ale práve teraz.</small>
         <em>Chcem vidieť miesto →</em>
       </a>
-      <a class="market-tab category-card tab-event" href="browse">
+      <a class="market-tab category-card tab-event" href="browse" aria-label="Vybrať živý pohľad z eventu">
+        <i class="category-number" aria-hidden="true">02</i>
         <span>◉</span>
         <b>Eventy</b>
         <small>Koncert, trh, zápas alebo festival očami človeka, ktorý je priamo tam.</small>
         <em>Chcem cítiť atmosféru →</em>
       </a>
-      <a class="market-tab category-card tab-check" href="browse">
-        <span>◇</span>
-        <b>Pred cestou</b>
-        <small>Pozri si hotel, ulicu alebo štvrť skôr, než zaplatíš cestu.</small>
-        <em>Chcem overiť realitu →</em>
-      </a>
-      <a class="market-tab category-card tab-escape" href="browse">
-        <span>∞</span>
-        <b>Len vypnúť</b>
-        <small>Na pár minút odíď hlavou preč. More, mesto, večerná ulica, západ slnka.</small>
-        <em>Chcem malý únik →</em>
-      </a>
     </div>
 
     <div class="category-bottom-cta">
-      <strong>Napíš miesto, ktoré chceš vidieť live…</strong>
-      <a href="browse">Nájsť providera →</a>
+      <strong>Napíš miesto alebo event, ktorý chceš vidieť naživo…</strong>
+      <a href="browse">Vybrať zážitok →</a>
     </div>
   </div>
 </section>
@@ -10647,44 +10842,44 @@ nav{
 <section class="sec pricing r2" id="pricing">
   <div class="container">
     <div class="sec-lbl">Ceny</div>
-    <h2 class="sec-h">Flat-rate.<br>Jasná cena.</h2>
-    <p class="sec-p">Vieš presne čo platíš pred kliknutím. Žiadny per-minute stres.</p>
+    <h2 class="sec-h">Jasná cena.<br>Žiadne prekvapenia.</h2>
+    <p class="sec-p">Vyber si 8 alebo 15 minút. Cenu poznáš ešte pred objednaním.</p>
 
     <div class="pgrid2">
       <div class="pcard">
-        <div class="p-lbl">Quick Look</div>
-        <div class="p-amt">6€</div>
-        <div class="p-dur">8 minút · flat-rate</div>
-        <p class="p-explain">Rýchly živý pohľad na miesto, ulicu, okolie hotela alebo atmosféru.</p>
+        <div class="p-lbl">Rýchly pohľad</div>
+        <div class="p-amt">6 €</div>
+        <div class="p-dur">8 minút</div>
+        <p class="p-explain">Keď si chceš rýchlo pozrieť jedno miesto alebo na chvíľu zmeniť prostredie.</p>
         <ul class="p-feats">
-          <li>Rýchly živý pohľad na miesto</li>
-          <li>Ideálne na ulicu, hotel alebo atmosféru</li>
-          <li>Escrow platba</li>
-          <li>Auto-refund ak provider neodpovie</li>
+          <li>Pozrieš si jedno konkrétne miesto</li>
+          <li>Povieš, čo má človek ukázať</li>
+          <li>Ideálne na rýchle overenie alebo malý únik</li>
+          <li>Pevná cena 6 €</li>
         </ul>
       </div>
       <div class="pcard feat">
-        <div class="p-lbl">Full Look</div>
-        <div class="p-amt">10€</div>
-        <div class="p-dur">15 minút · flat-rate</div>
-        <p class="p-explain">Viac času, viac otázok a viac detailov z miesta.</p>
+        <div class="p-lbl">Detailný pohľad</div>
+        <div class="p-amt">10 €</div>
+        <div class="p-dur">15 minút</div>
+        <p class="p-explain">Keď chceš viac času na otázky, detaily a dôkladnejšiu prehliadku.</p>
         <ul class="p-feats">
-          <li>Detailná interaktívna prehliadka</li>
-          <li>Viac času, viac otázok, viac detailov</li>
-          <li>Escrow platba</li>
-          <li>Auto-refund ak provider neodpovie</li>
+          <li>Viac času na otázky a detaily</li>
+          <li>Človek ťa prevedie miestom naživo</li>
+          <li>Ideálne pred cestou, rezerváciou alebo rozhodnutím</li>
+          <li>Pevná cena 10 €</li>
         </ul>
       </div>
     </div>
 
-    <div class="p-trustline"><strong>Platíš až za dokončený živý pohľad.</strong> Ak provider neodpovie do 8 minút, peniaze sa automaticky vrátia.</div>
+    <div class="p-trustline"><strong>Vyber si podľa toho, čo chceš zažiť.</strong> 8 minút na rýchly pohľad, 15 minút na detailnejšiu prehliadku.</div>
 
     <div class="p-cta">
       <a href="browse" class="btn-main">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
-        Objednaj prvý pohľad
+        Vybrať miesto — od 6 €
       </a>
-      <div class="p-note">Bezpečná escrow platba · 100 % refund pri neodpovedaní</div>
+      <div class="p-note">Živé video · človek na mieste · ty určuješ, čo uvidíš</div>
     </div>
   </div>
 </section>
@@ -10715,13 +10910,13 @@ nav{
     <div class="trust-box">
       <div class="trust-copy">
         <div class="trust-lock" aria-hidden="true"></div>
-        <div class="t-title">Platíš až za dokončený<br>živý pohľad.</div>
-        <p class="t-desc">Platba ide cez Stripe do bezpečného escrow. Provider dostane peniaze až po dokončení. Ak neodpovie do 8 minút, automaticky dostaneš 100 % späť.</p>
+        <div class="t-title">Nie zo záznamu.<br>Práve teraz.</div>
+        <p class="t-desc">Na druhej strane je skutočný človek priamo na mieste. Počas živého videa mu povieš, kam sa má pozrieť, čo má ukázať a na čo sa chceš opýtať.</p>
       </div>
       <div class="t-stats">
-        <div><div class="ts-n">8 min</div><div class="ts-l">Max. čakanie</div></div>
-        <div><div class="ts-n">100%</div><div class="ts-l">Auto refund</div></div>
-        <div><div class="ts-n">Escrow</div><div class="ts-l">Bezpečná platba</div></div>
+        <div><div class="ts-n">LIVE</div><div class="ts-l">Živé video</div></div>
+        <div><div class="ts-n">1 : 1</div><div class="ts-l">Človek na mieste</div></div>
+        <div><div class="ts-n">TY</div><div class="ts-l">Rozhoduješ, čo uvidíš</div></div>
       </div>
     </div>
   </div>
@@ -10734,7 +10929,7 @@ nav{
     <div class="final-btns">
       <a href="browse" class="btn-final">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
-        Objednaj pohľad — Live od 6€
+        Vybrať miesto — od 6 €
       </a>
       <a href="#how" class="btn-ghost-f">Ako to funguje →</a>
     </div>
@@ -10748,9 +10943,9 @@ nav{
 
         <div class="f-links">
           <a href="#how">Ako to funguje</a>
-          <a href="#providers">Provideri</a>
+          <a href="#providers">Kategórie</a>
           <a href="#pricing">Ceny</a>
-          <a class="f-provider" href="provider-apply">Staň sa providerom</a>
+          <a class="f-provider" href="provider-apply">Staň sa človekom na mieste</a>
         </div>
 
         <div class="f-meta">
